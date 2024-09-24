@@ -6,6 +6,8 @@ The **DSA Kit** is a comprehensive toolkit designed for developers and students 
 ## Description
 **DSA Kit** offers a collection of efficient algorithms and data structures for sorting, searching, dynamic programming, greedy techniques, graph processing, and more. Each component is implemented in JavaScript and optimized for direct use. This kit is a valuable resource for those aiming to improve their understanding and application of DSA.
 
+> **Note:** You can also check the detailed description and how to implement these algorithms in the `folders/info.md` file.
+
 ### Algorithms (Algo)
 - **Dynamic Programming (DP)**: Techniques to solve problems by breaking them into overlapping subproblems.
 - **Greedy**: Algorithms that build a solution piece by piece by choosing the locally optimal solution.
@@ -22,3 +24,7 @@ The **DSA Kit** is a comprehensive toolkit designed for developers and students 
 - **Tree**: Binary trees, binary search trees (BST), AVL trees, etc.
 - **Trie**: Prefix tree for fast searching and auto-completion.
 - **Graph**: Graph algorithms such as DFS, BFS, Dijkstra's, and Floyd-Warshall.
+
+## Contributors
+- **Prasu Hirpara**: [GitHub](https://github.com/PrasuHirapara/)
+- **Mohit Bambharoiliya**: [GitHub](https://github.com/Mh0pe22)
