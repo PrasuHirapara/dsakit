@@ -16,13 +16,14 @@ const selectionSort = (array, reverse = false) => {
     return array;
   }
 
+  const length = array.length;
   const steps = [];
 
-  for (let i = 0; i < array.length - 1; i++) {
+  for (let i = 0; i < length - 1; i++) {
     let max = i;
     let min = i;
 
-    for (let j = 0; j < array.length - 1 - i; j++) {
+    for (let j = 0; j < length - 1 - i; j++) {
       if (!reverse) {
         if (array[max] < array[j]) {
           max = j;
@@ -35,7 +36,7 @@ const selectionSort = (array, reverse = false) => {
     }
 
     if (!reverse && max !== i) {
-      swap(array, array.length - i - 1, max);
+      swap(array, length - i - 1, max);
     } else if (reverse && min !== i) {
       swap(array, i, min);
     }

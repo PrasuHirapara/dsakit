@@ -1,6 +1,7 @@
 const selectionSort = require('./algorithms/sorting/selectionSort.js')
-const countingSort = require('./algorithms/sorting//countingSort.js')
-let arr = [1,20,5,19,11,13,5,8,2];
+const countingSort = require('./algorithms/sorting/cyclicSort.js')
+let arr = [4,5,3,2,1];
 
 const steps = countingSort(arr);
-console.log(steps);
+console.log(arr,steps)
+
