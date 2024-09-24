@@ -12,13 +12,14 @@
 
 const countingSort = (array , reverse = false)=>{
     const steps = [];
+    const length = array.length;
 
-    if(array == null || array.length == 1){
+    if(array == null || length == 1){
         return ;
     }
 
     let max = array [0];
-    for(let i = 0; i < array.length; i++){
+    for(let i = 0; i < length; i++){
         if(array[i] > max){
             max = array[i];
         }
@@ -26,7 +27,7 @@ const countingSort = (array , reverse = false)=>{
 
     const frequency = new Array(max + 1).fill(0);
     
-    for(let i = 0; i < array.length; i++){
+    for(let i = 0; i < length; i++){
         frequency[array[i]]++;
     }
 
@@ -55,4 +56,4 @@ const countingSort = (array , reverse = false)=>{
     
 }
 
-module.exports = countingSort;
+export default countingSort;
