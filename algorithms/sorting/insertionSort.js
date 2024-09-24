@@ -14,46 +14,36 @@ const swap = require('../../utils/swap');
 // Best case time complexity : O(n)
 // Space complexity: O(1)
 
-const insertionSort = (array , reverse=false)=>{
+const insertionSort = (array, reverse = false) => {
 
     const steps = [];
     const length = array.length;
 
-    for(let i = 1; i < length; i++){
+    for (let i = 1; i < length; i++) {
 
         let swapped = false;
-        if(!reverse){
-
-            // asscending order
-            for(let j = i; j > 0; j--){
-                if(array[j] < array[j - 1]){
-                    swap(array , j , j - 1);
+        for (let j = i; j > 0; j--) {
+            if (!reverse) {
+                if (array[j] < array[j - 1]) {
+                    swap(array, j, j - 1);
                     swapped = true;
                 }
-    
-                if(!swapped){
-                    break;
+            } else {
+                if (array[j] > array[j - 1]) {
+                    swap(array, j, j - 1);
+                    swapped = true;
                 }
             }
-        }else{
 
-            // desecnding order
-            for(let j = i; j > 0; j--){
-                if(array[j] > array[j - 1]){
-                    swap(array , j , j - 1);
-                    swapped = true;
-                }
-    
-                if(!swapped){
-                    break;
-                }
-            }            
+            if (!swapped) {
+                break;
+            }
         }
 
         steps.push([...array]);
     }
 
-    return  steps;
+    return steps;
 }
 
 module.exports = insertionSort;
