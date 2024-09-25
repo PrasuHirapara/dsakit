@@ -1,11 +1,13 @@
 const selectionSort = require('./algorithms/sorting/selectionSort.js')
 const countingSort = require('./algorithms/sorting/insertionSort.js');
 const insertionSort = require('./algorithms/sorting/insertionSort.js');
-const numberOfDigits = require('./utils/numberOfDigits.js');
-// let arr = [4,5,3,2,1];
+const radixSort = require('./algorithms/sorting/radixSort.js')
+let arr = [44,53,3,222,10];
 
 // const steps = insertionSort(arr, true);
-// console.log(arr,steps)\
+// console.log(arr,steps)
 
-const digits = numberOfDigits(34);
-console.log(digits)
+radixSort(arr , true)
+console.log(arr);
+
+
