@@ -3,6 +3,8 @@
     * This simple algorithm works by scanning each element in the array one-by-one until the target value is found or the end of the array is reached.
     * @param array - The array of integers in which the target value is searched.
     * @param target - The integer value to search for in the array.
+    * @param start  - To fix range of searching in array from start to end.
+    * @param end  - To fix range of searching in array from start to end.
     * @return - The index of the target value if found; otherwise, returns -1.
 */
 
@@ -11,10 +13,9 @@ Time complexity = O(n)
 Space complexity = O(1)
 */
 
-const sequentialSearch = (array , target)=>{
+const sequentialSearch = (array , target, start = 0, end = array.length - 1)=>{
 
-    const length = array.length;
-    for(let i = 0; i< length; i++){
+    for(let i = start; i < end; i++){
         if(array[i] == target){
             return i; // return index if target found
         }

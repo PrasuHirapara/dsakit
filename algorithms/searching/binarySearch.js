@@ -2,9 +2,11 @@
     * Searches for a target value in a sorted array of integers using the Binary Search algorithm.
     * This efficient algorithm works by repeatedly dividing the search interval in half.
     * @param array - The sorted array of integers in which the target value is searched.
+    * @param start  - To fix range of searching in array from start to end.
+    * @param end  - To fix range of searching in array from start to end.
     * @param target - The integer value to search for in the array.
-    * @param reverse - Searches the array in descending order if true.
     * @param logSteps - If true, logs and returns the steps taken during the search.
+    * @param reverse - Searches the array in descending order if true.
     * @return - The index of the target value if found; otherwise, returns -1.
 */
 
@@ -12,10 +14,8 @@
 Time complexity = O(log n)
 Space complexity = O(1) 
 */
-const binarySearch = (array, target, reverse = false, logSteps = false) => {
+const binarySearch = (array, target, start = 0, end = array.length - 1, logSteps = false, reverse = false) => {
 
-    let start = 0;
-    let end = array.length - 1;
     let steps = [];
 
     if (!reverse) {
