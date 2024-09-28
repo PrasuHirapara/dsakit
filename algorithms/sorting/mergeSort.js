@@ -6,8 +6,6 @@
  * @returns - Array of all intermediate array ( steps ) at each recursive call 
 */
 
-const swap = require('../../utils/swap.js');
-
 // Time complexity: O(n * log(n))
 // Space complexity: O(1) for sorting in place, O(log n) for recursion stack
 // Stable sorting algorithm
