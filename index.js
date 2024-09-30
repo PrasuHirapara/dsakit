@@ -30,7 +30,7 @@ const timSort = require('./algorithms/sorting/timSort.js');
 const heapSort = require('./algorithms/sorting/heapSort.js')
 
 let arr = [1,2,3,4];
-heapSort(arr , true , false);
+timSort(arr , true );
 
 console.log(arr);
 
