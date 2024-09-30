@@ -16,7 +16,7 @@
 
 const swap = require("../../utils/swap");
 
-const heapSort = (array, reverse = false, logSteps = true) => {
+const heapSort = (array, reverse = false, logSteps = false) => {
     const length = array.length;
     const steps = [];
 
@@ -26,25 +26,36 @@ const heapSort = (array, reverse = false, logSteps = true) => {
         }
     }
 
-    function heapify(array, index, length) {
-        let largest = index;
+    function heapify(array, index, length , reverse) {
+        let largestOrSmallest = index;
         let left = 2 * index + 1;
         let right = 2 * index + 2;
 
         logStep(`Heapifying at index ${index}, left=${left}, right=${right}, array=${JSON.stringify(array)}`);
 
-        if (left < length && array[left] > array[largest]) {
-            largest = left;
+        if (reverse) {
+            // Min-heap logic for descending order
+            if (left < length && array[left] < array[largestOrSmallest]) {
+                largestOrSmallest = left;
+            }
+            if (right < length && array[right] < array[largestOrSmallest]) {
+                largestOrSmallest = right;
+            }
+        } else {
+            // Max-heap logic for ascending order
+            if (left < length && array[left] > array[largestOrSmallest]) {
+                largestOrSmallest = left;
+            }
+            if (right < length && array[right] > array[largestOrSmallest]) {
+                largestOrSmallest = right;
+            }
         }
 
-        if (right < length && array[right] > array[largest]) {
-            largest = right;
-        }
-
-        if (largest !== index) {
-            swap(array, largest, index);
-            logStep(`Swapped index ${index} with ${largest}: ${JSON.stringify(array)}`);
-            heapify(array, largest, length);
+        // If largestOrSmallest is not the root, swap and continue heapifying
+        if (largestOrSmallest !== index) {
+            swap(array, largestOrSmallest, index);
+            logStep(`Swapped index ${index} with ${largestOrSmallest}: ${JSON.stringify(array)}`);
+            heapify(array, largestOrSmallest, length, reverse);
         }
     }
 
@@ -53,7 +64,7 @@ const heapSort = (array, reverse = false, logSteps = true) => {
 
         // Build max heap
         for (let index = Math.floor(length / 2 - 1); index >= 0; index--) {
-            heapify(array, index, length);
+            heapify(array, index, length, reverse);
         }
 
         logStep(`Heap built: ${JSON.stringify(array)}`);
@@ -63,18 +74,12 @@ const heapSort = (array, reverse = false, logSteps = true) => {
             logStep(`Swapping root with index ${i}: ${array[0]}, ${array[i]}`);
             swap(array, 0, i);
             logStep(`Array after swap: ${JSON.stringify(array)}`);
-            heapify(array, 0, i);
+            heapify(array, 0, i, reverse);  // Rebuild heap after removing the largest/smallest
         }
     }
 
     // Sort the array
-    sort(array, length);
-
-    // If reverse is true, reverse the sorted array for descending order
-    if (reverse) {
-        array.reverse();
-        logStep(`Reversed array for descending order: ${JSON.stringify(array)}`);
-    }
+    sort(array, length , reverse);
 
     logStep(`Final sorted array: ${JSON.stringify(array)}`);
 
