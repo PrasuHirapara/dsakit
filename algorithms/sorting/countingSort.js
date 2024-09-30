@@ -56,4 +56,4 @@ const countingSort = (array , reverse = false)=>{
     
 }
 
-export default countingSort;
+module.exports = countingSort;

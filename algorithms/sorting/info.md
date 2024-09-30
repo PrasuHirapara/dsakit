@@ -9,16 +9,16 @@ This folder contains implementations of various sorting algorithms. All sorting 
 
 ## List of Algorithms
 
-Bubble Sort
-Selection Sort
-Insertion Sort
-Cyclic Sort
-Counting Sort
-Merge Sort
-Radix Sort
-Merge Sort
-Quick Sort
-Tim Sort 
+- Bubble Sort
+- Counting Sort
+- Cyclic Sort
+- Heap Sort
+- Insertion Sort
+- Merge Sort
+- Quick Sort
+- Radix Sort
+- Selection Sort
+- Tim Sort
 
 ---
 
@@ -28,7 +28,7 @@ Tim Sort
 
 1. Import the algorithm function:
    ```js
-   const insertionSort = require('./algorithms/sorting/insertionSort.js');
+   const { InsertionSort } = require('DSAKIT');
    ```
 
 2. Define an array to be sorted:
@@ -38,7 +38,7 @@ Tim Sort
 
 3. Call the function to sort the array and get the steps:
    ```js
-   const steps = insertionSort(arr);
+   const steps = InsertionSort(arr);
    ```
 
 4. Output the sorted array and steps:
@@ -51,60 +51,60 @@ Tim Sort
 
 ## Running Other Algorithms
 
-Each sorting algorithm follows a similar structure. Replace `insertionSort` with the name of the algorithm you want to use:
+Each sorting algorithm follows a similar structure. Replace `InsertionSort` with the name of the algorithm you want to use:
 
 - For **Bubble Sort**:
    ```js
-   const bubbleSort = require('./algorithms/sorting/bubbleSort.js');
-   const steps = bubbleSort(arr);
+   const { BubbleSort } = require('DSAKIT');
+   const steps = BubbleSort(arr);
    ```
 
 - For **Selection Sort**:
    ```js
-   const selectionSort = require('./algorithms/sorting/selectionSort.js');
-   const steps = selectionSort(arr);
+   const { SelectionSort } = require('DSAKIT');
+   const steps = SelectionSort(arr);
    ```
 
 - For **Cyclic Sort**:
    ```js
-   const cyclicSort = require('./algorithms/sorting/cyclicSort.js');
-   const steps = cyclicSort(arr);
+   const { CyclicSort } = require('DSAKIT');
+   const steps = CyclicSort(arr);
    ```
 
 - For **Counting Sort**:
    ```js
-   const countingSort = require('./algorithms/sorting/countingSort.js');
-   const steps = countingSort(arr);
+   const { CountingSort } = require('DSAKIT');
+   const steps = CountingSort(arr);
    ```
 
 - For **Merge Sort**:
    ```js
-   const mergeSort = require('./algorithms/sorting/mergeSort.js');
-   const steps = mergeSort(arr);
+   const { MergeSort } = require('DSAKIT');
+   const steps = MergeSort(arr);
    ```
 
 - For **Radix Sort**:
    ```js
-   const radixSort = require('./algorithms/sorting/radixSort.js');
-   const steps = radixSort(arr);
+   const { RadixSort } = require('DSAKIT');
+   const steps = RadixSort(arr);
    ```
 
 - For **Heap Sort**:
    ```js
-   const heapSort = require('./algorithms/sorting/heapSort.js');
-   const steps = heapSort(arr);
+   const { HeapSort } = require('DSAKIT');
+   const steps = HeapSort(arr);
    ```
 
 - For **Quick Sort**:
    ```js
-   const quickSort = require('./algorithms/sorting/quickSort.js');
-   const steps = quickSort(arr);
+   const { QuickSort } = require('DSAKIT');
+   const steps = QuickSort(arr);
    ```
 
 - For **Tim Sort**:
    ```js
-   const timSort = require('./algorithms/sorting/timSort.js');
-   const steps = timSort(arr);
+   const { TimSort } = require('DSAKIT');
+   const steps = TimSort(arr);
    ```
 
 ---
