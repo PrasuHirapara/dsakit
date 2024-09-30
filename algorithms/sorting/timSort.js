@@ -8,7 +8,6 @@
  *
  * @param array - Original array which needs to be sorted.
  * @param reverse - Boolean flag to indicate if the array should be sorted in descending order.
- * @param logSteps - Boolean flag to indicate if intermediate steps should be logged.
  * @returns Object containing the sorted array and an array of intermediate steps if logSteps is true.
  */
 
