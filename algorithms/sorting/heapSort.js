@@ -11,12 +11,12 @@
  */
 
 // Not stable
-// Time complexity: O(n * log n), where n is the number of elements in the array
+// Time complexity: O(n * log n)
 // Space complexity: O(1) for in-place sorting, O(log n) for the recursion stack
 
 const swap = require("../../utils/swap");
 
-const heapSort = (array, reverse = false, logSteps = false) => {
+const heapSort = (array, reverse = false, logSteps = true) => {
     const length = array.length;
     const steps = [];
 
@@ -82,11 +82,11 @@ const heapSort = (array, reverse = false, logSteps = false) => {
     if (logSteps) {
         return {
             sortedArray: array,
-            steps: steps.join("\n") // Return the steps formatted with newlines
+            steps: steps.join("\n")
         };
     }
 
-    return array; // Just return the sorted array 
+    return array;
 }
 
 module.exports = heapSort;

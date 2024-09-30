@@ -1,15 +1,27 @@
-// const quickSort = require('./algorithms/sorting/quickSort.js');
+const SinglyLinkedList = require('./dataStructures/linked list/SinglyLinkedList.js');
 
+let ll = new SinglyLinkedList();
 
-// let arr = [5346,7,8,76,9807,3582,1,7,7,653,8,4,3,2,1];
-// const steps = quickSort(arr, true);
+ll.insert(40);
+ll.insert(45);
+ll.insert(50);
+ll.insert(55);
+ll.insert(60);
 
-// console.log(steps, arr);
+ll.display()
 
-const heapSort = require('./algorithms/sorting/heapSort.js');
+ll.insertAtHead(40);
+ll.insertAtIndex(58, 5);
 
-let arr = [5346,7,8,76,9807,3582,1,7,7,653,8,4,3,2,1];;
+ll.display();
 
-heapSort(arr)
-const steps = heapSort(arr , false , true);
-console.log(arr)
+ll.remove();
+ll.removeAtHead();
+ll.display();
+ll.removeAtIndex(3);
+ll.display();
+
+console.log(ll.peek());
+
+console.log(ll.contains(58));
+console.log(ll.indexOf(58));
