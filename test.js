@@ -1,6 +1,14 @@
-const dsakit = require('./index.js');
+const SinglyLinkedList = require('./dataStructures/linked list/SinglyLinkedList.js');
 
-let arr = [36,56,16,-232456,913,3658,8365427]
-dsakit.bubbleSort(arr);
+const arr = [5,23453,52];
 
-console.log(arr);
+const ll = new SinglyLinkedList();
+
+ll.display()
+
+ll.fromArray(arr);
+
+ll.display();
+
+const array = ll.getArray();
+console.log(array);

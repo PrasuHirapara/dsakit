@@ -34,6 +34,8 @@ class Node{
  *                - Time Complexity: O(n)
  * @method reverse - Reverses Linked List in place.
  *                - Time Complexity: O(n)
+ * @method fromArray - Converts and adds array value to linked list fromate.
+ *                   - Time complextiy: O(n)
  * @method addAll - Adds values of other Linked list.
  *                - Time Complexity: O(n + k)
  * @method display - Prints the data
@@ -257,8 +259,40 @@ class SinglyLinkedList{
         }
     }
 
+    // fromArray
+    fromArray(array){
+        if(array.length <= 0){
+            return;
+        }
+
+        for(const elem of array){
+            this.insert(elem);
+        }
+    }
+
+    // getArray
+    getArray(){
+        if(!this._head){
+            return new Array(0);
+        }
+
+        let array = new Array(0);
+        let temp = this._head;
+
+        while(temp){
+            array.push(temp.data);
+            temp = temp.next;
+        }
+
+        return array;
+    }
+
     // display the Linked List
     display(){
+        if(!this._head){
+            console.log("No data found.Insert elements first.");
+            return;
+        }
         let str = '';
         let node = this._head;
 
