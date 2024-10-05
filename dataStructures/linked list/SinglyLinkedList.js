@@ -176,7 +176,7 @@ class SinglyLinkedList{
 
     // peek element
     peek(){
-        return this._length === 0 ? null : this._tail.data;
+        return this._length === 0 ? null : this._head.data;
     }
 
     // length
