@@ -34,6 +34,8 @@ class Node{
  *                - Time Complexity: O(n)
  * @method reverse - Reverses Linked List in place.
  *                - Time Complexity: O(n)
+ * @method fromArray - Converts and adds array value to linked list fromate.
+ *                   - Time complextiy: O(n)
  * @method addAll - Adds values of other Linked list.
  *                - Time Complexity: O(n + k)
  * @method display - Prints the data
@@ -137,25 +139,15 @@ class SinglyLinkedList{
 
     // remove at specific index
     removeAtIndex(index) {
+        if(index === undefined){
+            return 'Provide valid index.'
+        }
         if (index >= this._length || index < 0) {
             throw new Error("Invalid index");
         } else if (index === 0) {
             return this.removeAtHead();
         } else if (index === this._length - 1) {
-            let node = this._head;
-            let currIndex = 0;
-    
-            while (currIndex !== this._length - 2) {
-                node = node.next;
-                currIndex++;
-            }
-    
-            let removed = this._tail.data;
-            node.next = null;
-            this._tail = node;
-    
-            this._length--;
-            return removed;
+            return this.remove();
         } else {
             let node = this._head;
             let currIndex = 0;
@@ -249,7 +241,7 @@ class SinglyLinkedList{
             return;
         }
 
-        let h2 = head2;
+        let h2 = head2._head;
 
         while(h2){
             this.insert(h2.data);
@@ -257,8 +249,40 @@ class SinglyLinkedList{
         }
     }
 
+    // fromArray
+    fromArray(array){
+        if(array.length <= 0){
+            return;
+        }
+
+        for(const elem of array){
+            this.insert(elem);
+        }
+    }
+
+    // getArray
+    getArray(){
+        if(!this._head){
+            return new Array(0);
+        }
+
+        let array = new Array(0);
+        let temp = this._head;
+
+        while(temp){
+            array.push(temp.data);
+            temp = temp.next;
+        }
+
+        return array;
+    }
+
     // display the Linked List
     display(){
+        if(!this._head){
+            console.log("No data found.Insert elements first.");
+            return;
+        }
         let str = '';
         let node = this._head;
 
