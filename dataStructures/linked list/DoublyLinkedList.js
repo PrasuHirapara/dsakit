@@ -322,7 +322,7 @@ class DoublyLinkedList {
 
         // Traverse the list and build the output string
         while(node){
-            str += node.data + ' -> ';
+            str += node.data + ' -> <-';
             node = node.next;
         }
 
