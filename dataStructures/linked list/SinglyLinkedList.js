@@ -284,6 +284,7 @@ class SinglyLinkedList{
         let str = '';
         let node = this._head;
 
+        // Traverse the list and build the output string
         while(node){
             str += node.data + ' -> ';
             node = node.next;
