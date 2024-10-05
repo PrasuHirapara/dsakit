@@ -262,13 +262,11 @@ class SinglyLinkedList{
 
     // getArray
     getArray(){
-        if(!this._head){
-            return new Array(0);
-        }
 
-        let array = new Array(0);
+        let array = [];
         let temp = this._head;
 
+        // Traverse through the list and push each node's data to the array
         while(temp){
             array.push(temp.data);
             temp = temp.next;
