@@ -1,3 +1,7 @@
+/**
+ * Node is the object which contains data and address of next node.
+ * @returns - Object of class Node
+ */
 class Node {
     constructor(data, next = null, prev = null) {
         this.data = data;
