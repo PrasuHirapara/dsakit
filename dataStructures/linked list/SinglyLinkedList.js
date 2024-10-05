@@ -139,25 +139,15 @@ class SinglyLinkedList{
 
     // remove at specific index
     removeAtIndex(index) {
+        if(index === undefined){
+            return 'Provide valid index.'
+        }
         if (index >= this._length || index < 0) {
             throw new Error("Invalid index");
         } else if (index === 0) {
             return this.removeAtHead();
         } else if (index === this._length - 1) {
-            let node = this._head;
-            let currIndex = 0;
-    
-            while (currIndex !== this._length - 2) {
-                node = node.next;
-                currIndex++;
-            }
-    
-            let removed = this._tail.data;
-            node.next = null;
-            this._tail = node;
-    
-            this._length--;
-            return removed;
+            return this.remove();
         } else {
             let node = this._head;
             let currIndex = 0;
