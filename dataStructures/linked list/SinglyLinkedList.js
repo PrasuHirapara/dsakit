@@ -251,7 +251,7 @@ class SinglyLinkedList{
             return;
         }
 
-        let h2 = head2;
+        let h2 = head2._head;
 
         while(h2){
             this.insert(h2.data);
