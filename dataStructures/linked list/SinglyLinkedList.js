@@ -14,32 +14,49 @@ class Node{
  * It consist of chains of Node which contains data and address of next Node.
  * @method insert - Insert data at tail.
  *                - Time Complexity: O(1)
+ * 
  * @method insertAtHead - Insert data at Head ( starting of Linked List ).
  *                - Time Complexity: O(1)
+ * 
  * @method insertAtIndex - Insert data at perticular index.
  *                - Time Complexity: O(n)
+ * 
  * @method remove - remove data at tail.
  *                - Time Complexity: O(n)
+ * 
  * @method removeAtHead - remove data at Head ( starting of Linked List ).
  *                - Time Complexity: O(1)
+ * 
  * @method removeAtIndex - remove data at perticular index.
  *                - Time Complexity: O(n)
- * @method peek - Return peek element and its data.
+ * 
+ * @method peek - Return peek element.
  *                - Time Complexity: O(1)
+ * 
+ * @method peekTail - Return peek element from end.
+ *                - Time Complexity: O(1)
+ * 
  * @method length - Returns length of Linked List
  *                - Time Complexity: O(1)
+ * 
  * @method contains - Returns true if Linked List contains perticular data.
  *                - Time Complexity: O(n)
+ * 
  * @method indexOf - Returns index value of perticular data if present else -1.
  *                - Time Complexity: O(n)
+ * 
  * @method reverse - Reverses Linked List in place.
  *                - Time Complexity: O(n)
+ * 
  * @method fromArray - Converts and adds array value to linked list fromate.
  *                   - Time complextiy: O(n)
+ * 
  * @method addAll - Adds values of other Linked list.
  *                - Time Complexity: O(n + k)
+ * 
  * @method display - Prints the data
  *                 - Time complexity: O(n)
+ * 
  * @returns - Object of class Linked List.
  */
 
@@ -140,7 +157,7 @@ class SinglyLinkedList{
     // remove at specific index
     removeAtIndex(index) {
         if(index === undefined){
-            return 'Provide valid index.'
+            return null;
         }
         if (index >= this._length || index < 0) {
             throw new Error("Invalid index");
@@ -169,6 +186,11 @@ class SinglyLinkedList{
     // peek element
     peek(){
         return this._length === 0 ? null : this._head.data;
+    }
+
+    // peek tail
+    peekTail(){
+        return this._length === 0 ? null : this._tail.data;
     }
 
     // length

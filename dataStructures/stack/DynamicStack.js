@@ -28,7 +28,8 @@
  * 
  * @method isFull - Returns true if the stack is full.
  *                - Time complexity: O(1)
- * 
+ 
+ * @returns - Object of cladd Stack.
  */
 
 const Stack = require("./Stack");
