@@ -1,5 +1,3 @@
-import SinglyLinkedList from "../linked list/SinglyLinkedList";
-
 /**
  * Queue is a data structure that follows the First-In-First-Out (FIFO) strategy.
  * It is used to store values in a sequential manner where the first element added is the first to be removed.
@@ -27,13 +25,14 @@ import SinglyLinkedList from "../linked list/SinglyLinkedList";
  *                 - Time complexity: O(n)
  * 
  * @returns - Object of class Queue.
- */
+*/
 
+const SinglyLinkedList = require("../linked list/SinglyLinkedList");
 class Queue{
     constructor() {
         this._list = new SinglyLinkedList();
     }
-
+    
     // Adds an element at the tail of the queue 
     enqueue(data){
         this._list.insert(data);
