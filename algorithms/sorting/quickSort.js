@@ -52,11 +52,11 @@ const quickSort = (array, reverse = false, start = 0, end = array.length - 1) =>
     }
 
     // Log the state of the array after partitioning
-    steps.push(`Pivot = ${pivot}, ${prevState}, After array = [${array.slice(start, end + 1)}]`);
-
+    
     // recursively sort left and right arrays
     quickSort(array, reverse, start, e);
     quickSort(array, reverse, s, end);
+    steps.push(`Pivot = ${pivot}, ${prevState}, After array = [${array.slice(start, end + 1)}]`);
 
     return steps;
 }
