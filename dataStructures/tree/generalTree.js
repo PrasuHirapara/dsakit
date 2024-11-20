@@ -74,7 +74,7 @@ class generalTree {
                 this.root = this.createNode(rootData);
                 this.addChildren(this.root, () => {
                     this.logStep("Step 3: Tree has been created.");
-                    this.printTree();  // Print the final tree structure
+                    this.printTree();  // Print the final tree 
                     rl.close();
                 });
             });
