@@ -1,5 +1,5 @@
-const GeneralTree = require("./dataStructures/tree/generalTree");
+const dsa = require("./index.js");
 
-const tree = new GeneralTree();
+const tree = new dsa.GeneralTree();
 tree.buildTree();
-// tree.printTree();
+tree.printTree();

@@ -48,11 +48,11 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-class generalTree {
+class GeneralTree {
 
     constructor() {
         this.root = null;
-        this.showSteps = false;  // Flag to determine whether to show steps or not
+        this.showSteps = false;
     }
 
     buildTree() {
@@ -61,7 +61,7 @@ class generalTree {
             this.showSteps = response.toLowerCase() === 'yes';
 
             console.log(this.showSteps ? "Steps will be displayed..." : "Steps will not be displayed.");
-            
+
             console.log("Step 1: Building tree...");
             rl.question("Enter root node data: ", (rootData) => {
                 if (!rootData) {
@@ -205,4 +205,4 @@ class generalTree {
     }
 }
 
-module.exports = generalTree;
+module.exports = GeneralTree;
