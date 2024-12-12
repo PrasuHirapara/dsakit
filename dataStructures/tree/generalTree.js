@@ -56,8 +56,7 @@ class GeneralTree {
     }
 
     buildTree() {
-        console.log(this.showSteps ? "Steps will be displayed..." : "Steps will not be displayed.");
-        console.log("Step 1: Building tree...");
+        this.logStep("Step 1: Building tree...");
         
         rl.question("Enter root node data: ", (rootData) => {
             if (!rootData) {
@@ -201,3 +200,5 @@ class GeneralTree {
 }
 
 module.exports = GeneralTree;
+const tree = new GeneralTree()
+tree.buildTree()
