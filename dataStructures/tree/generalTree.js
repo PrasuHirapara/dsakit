@@ -200,5 +200,3 @@ class GeneralTree {
 }
 
 module.exports = GeneralTree;
-const tree = new GeneralTree()
-tree.buildTree()
