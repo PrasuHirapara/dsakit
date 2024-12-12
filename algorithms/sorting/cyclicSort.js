@@ -22,7 +22,7 @@ const cyclicSort = (array, reverse = false) => {
 
     // Sorting logic
     while (index < length) {
-        const correctIndex = reverse ? length - 1 - array[index] : array[index];
+        const correctIndex = reverse ? length - 1 - array[index] : array[index] - 1;
 
         if (array[index] < length && array[index] !== array[correctIndex]) {
             swap(array, index, correctIndex);
