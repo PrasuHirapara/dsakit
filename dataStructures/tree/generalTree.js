@@ -52,7 +52,7 @@ class GeneralTree {
 
     constructor(showSteps = false) {
         this.root = null;
-        this.showSteps = false;
+        this.showSteps = showSteps;
     }
 
     buildTree() {
@@ -200,5 +200,3 @@ class GeneralTree {
 }
 
 module.exports = GeneralTree;
-const tree = new GeneralTree()
-tree.buildTree()

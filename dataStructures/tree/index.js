@@ -1,7 +1,7 @@
-const GeneralTree = require("./generalTree");
-const BinaryTree = require("./binaryTree");
+const GeneralTree = require("./generalTree.js")
+// const BinaryTree = require("./binaryTree");
 
 module.exports = {
     GeneralTree,
-    BinaryTree
+    // BinaryTree
 }
