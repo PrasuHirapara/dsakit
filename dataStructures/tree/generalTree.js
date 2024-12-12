@@ -50,33 +50,28 @@ const rl = readline.createInterface({
 
 class GeneralTree {
 
-    constructor() {
+    constructor(showSteps = false) {
         this.root = null;
         this.showSteps = false;
     }
 
     buildTree() {
-        rl.question("Do you want to see the steps? (yes/no): ", (response) => {
-            // Set the flag based on user input
-            this.showSteps = response.toLowerCase() === 'yes';
+        console.log(this.showSteps ? "Steps will be displayed..." : "Steps will not be displayed.");
+        console.log("Step 1: Building tree...");
+        
+        rl.question("Enter root node data: ", (rootData) => {
+            if (!rootData) {
+                console.log("Please enter root node data. Without it, the tree cannot be created.");
+                rl.close();
+                return;
+            }
 
-            console.log(this.showSteps ? "Steps will be displayed..." : "Steps will not be displayed.");
-
-            console.log("Step 1: Building tree...");
-            rl.question("Enter root node data: ", (rootData) => {
-                if (!rootData) {
-                    console.log("Please enter root node data. Without it, the tree cannot be created.");
-                    rl.close();
-                    return;
-                }
-
-                this.logStep(`Step 2: Root node '${rootData}' has been created.`);
-                this.root = this.createNode(rootData);
-                this.addChildren(this.root, () => {
-                    this.logStep("Step 3: Tree has been created.");
-                    this.printTree();  // Print the final tree 
-                    rl.close();
-                });
+            this.logStep(`Step 2: Root node '${rootData}' has been created.`);
+            this.root = this.createNode(rootData);
+            this.addChildren(this.root, () => {
+                this.logStep("Step 3: Tree has been created.");
+                this.printTree(); // Print the final tree
+                rl.close();
             });
         });
     }
