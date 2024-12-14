@@ -47,13 +47,6 @@
  *                     Time Complexity: O(n)
  */
 
-const readline = require("readline");
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
 class Node {
     constructor(data = null, left = null, right = null) {
         this.data = data;
@@ -297,7 +290,9 @@ class BinarySearchTree {
     }
 
     findParentNode(data) {
-        if (!this.root || this.root.data === data) return null;
+        if (!this.root || this.root.data === data) {
+            return null;
+        }
 
         let queue = [this.root];
         while (queue.length) {
@@ -307,8 +302,12 @@ class BinarySearchTree {
                 return temp;
             }
 
-            if (temp.left) queue.push(temp.left);
-            if (temp.right) queue.push(temp.right);
+            if (temp.left){
+                queue.push(temp.left);
+            }
+            if (temp.right) {
+                queue.push(temp.right);
+            }
         }
 
         return null;
