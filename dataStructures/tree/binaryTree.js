@@ -82,7 +82,7 @@ class BinaryTree {
                     r1.close();
                     return;
                 }
-
+ 
                 this.logStep(`Step 2: Root node '${rootData}' has been created.`);
                 this.root = this.createNode(rootData);
                 this.addChildren(this.root, () => {
