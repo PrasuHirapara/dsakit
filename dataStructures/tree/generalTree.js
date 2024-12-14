@@ -199,8 +199,4 @@ class GeneralTree {
     }
 }
 
-<<<<<<< HEAD
 module.exports = GeneralTree;
-=======
-module.exports = GeneralTree;
->>>>>>> e8e0eac28631b085d5e85afea429bfdfe8337f32
