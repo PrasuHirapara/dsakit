@@ -345,7 +345,7 @@ class BinaryTree {
         this.preOrderTraversal(node.left);
         this.preOrderTraversal(node.right);
     }
-
+                                                                                                                                                
     isBalanced(node = this.root) {
         if (!node) return null;
 
