@@ -57,7 +57,7 @@
  *                            - Time Complexity: O(n), where n is the total number of nodes.
  *
  * @returns {BinaryTree} - An object of the BinaryTree class that represents the tree structure and provides methods for interacting with it.
- */
+*/
 
 const readline = require("readline");
 
@@ -404,6 +404,3 @@ class BinaryTree {
 }
 
 module.exports = BinaryTree;
-
-// const tree = new BinaryTree();
-// tree.buildTree();

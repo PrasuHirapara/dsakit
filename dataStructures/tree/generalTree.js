@@ -52,7 +52,7 @@ class GeneralTree {
 
     constructor(showSteps = false) {
         this.root = null;
-        this.showSteps = false;
+        this.showSteps = showSteps;
     }
 
     buildTree() {
