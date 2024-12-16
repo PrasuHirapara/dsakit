@@ -48,6 +48,14 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+class Node {
+    constructor(data = null) {
+        this.data = data;
+        this.children = []; 
+    }
+}
+
+
 class GeneralTree {
 
     constructor(showSteps = false) {
@@ -66,18 +74,13 @@ class GeneralTree {
             }
 
             this.logStep(`Step 2: Root node '${rootData}' has been created.`);
-            this.root = this.createNode(rootData);
+            this.root = new Node(rootData);
             this.addChildren(this.root, () => {
                 this.logStep("Step 3: Tree has been created.");
                 this.printTree(); // Print the final tree
                 rl.close();
             });
         });
-    }
-
-    createNode(data) {
-        this.logStep(`Creating node with data: '${data}'`);
-        return { data, children: [] };
     }
 
     addChildren(node, callback) {
@@ -87,7 +90,7 @@ class GeneralTree {
             numChildren = parseInt(numChildren, 10);
             if (isNaN(numChildren) || numChildren < 0) {
                 console.log(`Invalid number of children for node '${node.data}'`);
-                rl.close();
+                callback();
                 return;
             }
 
@@ -107,13 +110,17 @@ class GeneralTree {
                 console.log(`Skipping child ${i + 1} due to missing data.`);
             } else {
                 this.logStep(`Step 6: Creating child node '${childData}' for parent '${node.data}'`);
-                const childNode = this.createNode(childData);
+                const childNode = new Node(childData);
                 node.children.push(childNode);
 
                 this.addChildren(childNode, () => {
                     this.addChildNodes(node, numChildren, i + 1, callback);  // Recursively continue adding children
                 });
+
+                return;
             }
+
+            this.addChildNodes(node , numChildren , i + 1, callback);
         });
     }
 
