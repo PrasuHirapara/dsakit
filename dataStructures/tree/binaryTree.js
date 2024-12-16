@@ -101,11 +101,6 @@ class BinaryTree {
         });
     }
 
-    // createNode(data) {
-    //     this.logStep(`Creating node with data: '${data}'`);
-    //     return { data, left: null, right: null };
-    // }
-
     addChildren(node, callback) {
 
         r1.question(`Enter left child for '${node.data}' or enter '0' if no left.`, (leftData) => {
