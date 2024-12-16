@@ -413,5 +413,3 @@ class BinaryTree {
 
 module.exports = BinaryTree;
 
-const tree = new BinaryTree();
-tree.buildTree();
