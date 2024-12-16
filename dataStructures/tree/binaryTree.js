@@ -66,6 +66,13 @@ const r1 = readline.createInterface({
     output: process.stdout
 });
 
+class Node {
+    constructor(data = null, left = null, right = null) {
+        this.data = data;
+        this.left = left;
+        this.right = right;
+    }
+}
 class BinaryTree {
 
     constructor(showSteps = false) {
@@ -75,28 +82,29 @@ class BinaryTree {
 
     buildTree() {
 
-            this.logStep("Step 1: Building tree...");
-            r1.question("Enter root node data:  ", (rootData) => {
-                if (!rootData) {
-                    console.log("Please enter root node data. Without it, tree can not be created.");
-                    r1.close();
-                    return;
-                }
+        this.logStep("Starting tree construction...");
 
-                this.logStep(`Step 2: Root node '${rootData}' has been created.`);
-                this.root = this.createNode(rootData);
-                this.addChildren(this.root, () => {
-                    this.logStep("Step 3: Tree has been created.");
-                    this.printTree();
-                    r1.close();
-                });
+        r1.question("Enter root node data: ", (rootData) => {
+            if (!rootData) {
+                console.log("Root node cannot be empty.");
+                r1.close();
+                return;
+            }
+            this.root = new Node(rootData);
+            this.logStep(`Root node '${rootData}' created.`);
+
+            this.addChildren(this.root, () => {
+                this.logStep("Tree construction completed.");
+                this.printTree();
+                r1.close();
             });
+        });
     }
 
-    createNode(data) {
-        this.logStep(`Creating node with data: '${data}'`);
-        return { data, left: null, right: null };
-    }
+    // createNode(data) {
+    //     this.logStep(`Creating node with data: '${data}'`);
+    //     return { data, left: null, right: null };
+    // }
 
     addChildren(node, callback) {
 
@@ -105,10 +113,10 @@ class BinaryTree {
             if (leftData !== "" && isNaN(leftData)) {
                 console.log("Please enter a valid number for the child node.");
                 return this.addChildren(node, callback); // Re-ask for input
-            } 
+            }
 
             if (leftData && leftData !== "0") {
-                const leftChild = this.createNode(leftData);
+                const leftChild = new Node(leftData);
                 node.left = leftChild;
 
                 this.logStep(`Added left child '${leftData}' to node '${node.data}'.`);
@@ -123,7 +131,7 @@ class BinaryTree {
                             return this.addChildren(node, callback); // Re-ask for input
                         }
                         if (rightData && rightData !== "0") {
-                            const rightChild = this.createNode(rightData);
+                            const rightChild = new Node(rightData);
                             node.right = rightChild;
 
                             this.logStep(`Added right child '${rightData}' to node '${node.data}'`);
@@ -141,7 +149,7 @@ class BinaryTree {
                         return this.addChildren(node, callback); // Re-ask for input
                     }
                     if (rightData && rightData !== "0") {
-                        const rightChild = this.createNode(rightData);
+                        const rightChild = new Node(rightData);
                         node.right = rightChild;
 
                         this.logStep(`Added right child '${rightData}' to node '${node.data}'`);
@@ -160,13 +168,13 @@ class BinaryTree {
             return;
         }
 
-        this.logStep("Step 4: Printing the tree structure...");
+        this.logStep("Printing the tree structure...");
         this.printNode(this.root, 0);
     }
 
     printNode(node, level) {
 
-        if(!node) return;
+        if (!node) return;
 
         console.log(" ".repeat(level * 4) + `├── ${node.data}`);
         this.printNode(node.left, level + 1);
@@ -345,7 +353,7 @@ class BinaryTree {
         this.preOrderTraversal(node.left);
         this.preOrderTraversal(node.right);
     }
-                                                                                                                                                
+
     isBalanced(node = this.root) {
         if (!node) return null;
 
@@ -404,3 +412,6 @@ class BinaryTree {
 }
 
 module.exports = BinaryTree;
+
+const tree = new BinaryTree();
+tree.buildTree();
