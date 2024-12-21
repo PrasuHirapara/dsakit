@@ -306,6 +306,32 @@ class BinarySearchTree {
 
         this.insert(data);
     }
+
+    construct(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            this.update(i + 1, arr[i]);
+        }
+    }
+
+    update(index, value) {
+        while (index <= this.size) {
+            this.tree[index] += value;
+            index += index & -index;
+        }
+    }
+
+    prefixSum(index) {
+        let sum = 0;
+        while (index > 0) {
+            sum += this.tree[index];
+            index -= index & -index;
+        }
+        return sum;
+    }
+
+    rangeSum(left, right) {
+        return this.prefixSum(right) - this.prefixSum(left - 1);
+    }
 }
 
 
