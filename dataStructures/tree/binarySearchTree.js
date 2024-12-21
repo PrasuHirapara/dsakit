@@ -1,50 +1,35 @@
 /**
- * BinarySearchTree is a data structure where each node has at most two children: left and right.
- * The left child is always less than its root, and the right child is always greater than the root node.
+ * BinaryIndexedTree (Fenwick Tree) is a data structure for efficiently managing cumulative frequency tables or prefix sums.
+ * It allows updates and queries of prefix sums in logarithmic time.
  *
  * Methods:
  * 
- * @method insert(data) - Inserts a node with the given data into the tree.
- *                        Time Complexity: O(n), where n is the total number of nodes.
+ * @method construct - Constructs the Binary Indexed Tree from an array.
+ *                          Time Complexity: O(n log n), where n is the size of the array.
  *
- * @method fromArray(arr) - Inserts all elements from an array into the tree.
- *                          Time Complexity: O(n^2) for unsorted data, O(n log n) for balanced insertion.
+ * @method update - Updates the BIT by adding a value to a specific index.
+ *                                Time Complexity: O(log n)
  *
- * @method bfs() - Performs Breadth-First Search and returns the elements in level-order.
- *                 Time Complexity: O(n)
+ * @method prefixSum - Returns the sum of elements from index 1 to the given index.
+ *                            Time Complexity: O(log n)
  *
- * @method dfs() - Performs Depth-First Search (pre-order) and returns the elements.
- *                 Time Complexity: O(n)
+ * @method rangeSum - Returns the sum of elements in the range [left, right].
+ *                                 Time Complexity: O(log n)
  *
- * @method getLevel() - Returns the height (max level) of the tree.
- *                      Time Complexity: O(n)
+ * @method insert - Inserts a new node into the binary tree representation.
+ *                                Time Complexity: O(log n)
  *
- * @method isSymmetric() - Checks if the tree is symmetric.
- *                         Time Complexity: O(n)
+ * @method bfs - Performs Breadth-First Search (level-order traversal) on the binary tree representation.
+ *                 Time Complexity: O(n), where n is the number of nodes in the tree.
  *
- * @method isBalanced() - Checks if the tree is height-balanced.
- *                        Time Complexity: O(n)
- *
- * @method contains(data) - Checks if a node with the given data exists in the tree.
- *                          Time Complexity: O(n)
- *
- * @method isCompleteBinaryTree() - Checks if the tree is a complete binary tree.
- *                                  Time Complexity: O(n)
- *
- * @method inOrder() - Performs in-order traversal and returns the elements as an array.
+ * @method inOrder - Performs in-order traversal on the binary tree representation.
  *                     Time Complexity: O(n)
  *
- * @method preOrder() - Performs pre-order traversal and returns the elements as an array.
+ * @method preOrder - Performs pre-order traversal on the binary tree representation.
  *                      Time Complexity: O(n)
  *
- * @method postOrder() - Performs post-order traversal and returns the elements as an array.
+ * @method postOrder - Performs post-order traversal on the binary tree representation.
  *                       Time Complexity: O(n)
- *
- * @method findParentNode(data) - Finds and returns the parent node of the node containing the given data.
- *                                Time Complexity: O(n)
- *
- * @method add(data) - Adds a node if it doesn't exist.
- *                     Time Complexity: O(n)
  */
 
 class Node {
