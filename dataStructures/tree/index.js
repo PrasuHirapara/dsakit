@@ -5,6 +5,7 @@ const AVLTree = require("./AVL_Tree.js");
 const BinaryIndexedTree = require("./binaryIndexTree.js");
 const NaryTree = require("./N_ary_tree.js");
 const SegmentTree = require("./segmentTree.js");
+const HeapTree = require("./binaryIndexTree.js");
 
 module.exports = {
     AVLTree,
@@ -14,5 +15,6 @@ module.exports = {
     AVLTree,
     BinaryIndexedTree,
     NaryTree,
-    SegmentTree
+    SegmentTree,
+    HeapTree
 }
