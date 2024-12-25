@@ -1,87 +1,114 @@
 /**
- * BinaryIndexedTree (Fenwick Tree) implementation for efficient prefix sum and range queries.
- * 
- *  A Binary Indexed Tree is used for efficient range queries and updates 
- * on prefix sums of an array. This implementation includes:
- * 
- * - Efficient prefix and range sum computations.
- * - Update operations to modify values in the tree.
- * - Tree traversal methods (BFS, in-order, pre-order, post-order).
- * 
- * - construct(arr): Constructs the Binary Indexed Tree from an array.
- * - update(index, value): Updates the BIT by adding a value to a specific index.
- * - prefixSum(index): Returns the sum of elements from index 1 to the given index.
- * - rangeSum(left, right): Returns the sum of elements in the range [left, right].
- * - insert(index, value): Inserts a new node into the binary tree representation.
- * - bfs(): Returns a level-order (BFS) traversal of the binary tree.
- * - inOrder(): Returns an in-order traversal of the binary tree.
- * - preOrder(): Returns a pre-order traversal of the binary tree.
- * - postOrder(): Returns a post-order traversal of the binary tree.
+ * HeapTree implementation for efficient priority queue operations and heap-specific traversals.
+ *
+ * A HeapTree is used for implementing heap operations such as insertion, deletion,
+ * and fetching the minimum or maximum element depending on the type of heap (min-heap or max-heap).
+ * This implementation includes:
+ *
+ * - Efficient insertion and deletion operations to maintain heap properties.
+ * - Support for min-heap or max-heap behavior.
+ * - Traversal methods (BFS, in-order, pre-order, post-order).
+ *
+ * - insert(value): Inserts a new value into the heap while maintaining heap properties.
+ * - extract(): Removes and returns the root value (min or max based on heap type).
+ * - peek(): Returns the root value without removing it.
+ * - bfs(): Returns a level-order (BFS) traversal of the heap.
+ * - inOrder(): Returns an in-order traversal of the heap.
+ * - preOrder(): Returns a pre-order traversal of the heap.
+ * - postOrder(): Returns a post-order traversal of the heap.
  */
 
 class Node {
-    constructor(index = null, value = 0) {
-        this.index = index;
+    constructor(value = 0) {
         this.value = value;
         this.left = null;
         this.right = null;
     }
 }
 
-class BinaryIndexedTree {
-    constructor(size) {
-        this.size = size;
-        this.tree = new Array(size + 1).fill(0);
+class HeapTree {
+    constructor(isMinHeap = true) {
+        this.isMinHeap = isMinHeap;
+        this.heap = [];
         this.root = null;
     }
 
-    construct(arr) {
-        for (let i = 0; i < arr.length; i++) {
-            this.update(i + 1, arr[i]);
-            this.insert(i + 1, arr[i]);
+    compare(parent, child) {
+        return this.isMinHeap ? parent > child : parent < child;
+    }
+
+    swap(i, j) {
+        [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
+    }
+
+    insert(value) {
+        this.heap.push(value);
+        this.insertIntoTree(value);
+        this.heapifyUp(this.heap.length - 1);
+    }
+
+    heapifyUp(index) {
+        let parentIndex = Math.floor((index - 1) / 2);
+        while (index > 0 && this.compare(this.heap[parentIndex], this.heap[index])) {
+            this.swap(parentIndex, index);
+            index = parentIndex;
+            parentIndex = Math.floor((index - 1) / 2);
         }
     }
 
-    update(index, value) {
-        while (index <= this.size) {
-            this.tree[index] += value;
-            index += index & -index;
+    extract() {
+        if (this.heap.length === 0) return null;
+        const rootValue = this.heap[0];
+        this.heap[0] = this.heap.pop();
+        this.heapifyDown(0);
+        return rootValue;
+    }
+
+    heapifyDown(index) {
+        const size = this.heap.length;
+        let leftChild = 2 * index + 1;
+        let rightChild = 2 * index + 2;
+        let extreme = index;
+
+        if (leftChild < size && this.compare(this.heap[extreme], this.heap[leftChild])) {
+            extreme = leftChild;
+        }
+
+        if (rightChild < size && this.compare(this.heap[extreme], this.heap[rightChild])) {
+            extreme = rightChild;
+        }
+
+        if (extreme !== index) {
+            this.swap(index, extreme);
+            this.heapifyDown(extreme);
         }
     }
 
-    prefixSum(index) {
-        let sum = 0;
-        while (index > 0) {
-            sum += this.tree[index];
-            index -= index & -index;
-        }
-        return sum;
+    peek() {
+        return this.heap.length > 0 ? this.heap[0] : null;
     }
 
-    rangeSum(left, right) {
-        return this.prefixSum(right) - this.prefixSum(left - 1);
-    }
+    insertIntoTree(value) {
+        const newNode = new Node(value);
 
-    insert(index, value) {
         if (!this.root) {
-            this.root = new Node(index, value);
+            this.root = newNode;
             return;
         }
 
-        let temp = this.root;
-        while (true) {
-            if (index < temp.index) {
-                if (!temp.left) {
-                    temp.left = new Node(index, value);
-                    return;
-                }
-                temp = temp.left;
+        const queue = [this.root];
+        while (queue.length) {
+            const current = queue.shift();
+
+            if (!current.left) {
+                current.left = newNode;
+                return;
+            } else if (!current.right) {
+                current.right = newNode;
+                return;
             } else {
-                if (!temp.right) {
-                    temp.right = new Node(index, value);
-                    return;
-                }
-                temp = temp.right;
+                queue.push(current.left);
+                queue.push(current.right);
             }
         }
     }
@@ -94,7 +121,7 @@ class BinaryIndexedTree {
 
         while (queue.length) {
             const current = queue.shift();
-            result.push({ index: current.index, value: current.value });
+            result.push(current.value);
 
             if (current.left) queue.push(current.left);
             if (current.right) queue.push(current.right);
@@ -108,7 +135,7 @@ class BinaryIndexedTree {
         const traverse = (node) => {
             if (node) {
                 traverse(node.left);
-                result.push({ index: node.index, value: node.value });
+                result.push(node.value);
                 traverse(node.right);
             }
         };
@@ -120,7 +147,7 @@ class BinaryIndexedTree {
         const result = [];
         const traverse = (node) => {
             if (node) {
-                result.push({ index: node.index, value: node.value });
+                result.push(node.value);
                 traverse(node.left);
                 traverse(node.right);
             }
@@ -135,7 +162,7 @@ class BinaryIndexedTree {
             if (node) {
                 traverse(node.left);
                 traverse(node.right);
-                result.push({ index: node.index, value: node.value });
+                result.push(node.value);
             }
         };
         traverse(this.root);
@@ -143,4 +170,4 @@ class BinaryIndexedTree {
     }
 }
 
-module.exports = BinaryIndexedTree;
+module.exports = HeapTree;
