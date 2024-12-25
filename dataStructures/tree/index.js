@@ -7,6 +7,7 @@ const NaryTree = require("./N_ary_tree.js");
 const SegmentTree = require("./segmentTree.js");
 
 module.exports = {
+    AVLTree,
     GeneralTree,
     BinaryTree,
     BinarySearchTree,
