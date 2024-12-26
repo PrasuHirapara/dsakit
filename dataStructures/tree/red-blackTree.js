@@ -1,5 +1,36 @@
+/**
+ * RedBlackTree implementation for balanced binary search trees.
+ *
+ * A Red-Black Tree is a self-balancing binary search tree used for
+ * maintaining sorted data and performing efficient insertions, deletions, and lookups.
+ * This implementation includes:
+ *
+ * - Insertion with rebalancing to maintain Red-Black Tree properties.
+ * - Deletion with rebalancing to ensure the tree remains balanced.
+ * - Rotation operations (left and right rotations).
+ * - Traversal methods (BFS, in-order, pre-order, post-order).
+ * - Utility functions for tree visualization and subtree queries.
+ *
+ * Methods:
+ * - insert(data): Inserts a value into the tree, maintaining balance.
+ * - delete(data): Deletes a value from the tree, maintaining balance.
+ * - bfs(): Returns a level-order (BFS) traversal of the tree.
+ * - inOrder(): Returns an in-order traversal of the tree.
+ * - preOrder(): Returns a pre-order traversal of the tree.
+ * - postOrder(): Returns a post-order traversal of the tree.
+ * - printNode(node = this.root, level = 0): Prints the tree structure in a readable format.
+ * - minimum(node): Returns the node with the smallest value in the subtree.
+ *
+ * Internal Helper Methods:
+ * - adjustInsert(node): Fixes violations after insertion.
+ * - adjustDelete(node): Fixes violations after deletion.
+ * - rotateLeft(node): Performs a left rotation.
+ * - rotateRight(node): Performs a right rotation.
+ * - transPlant(a, b): Replaces one subtree with another during deletion.
+ */
+
 class Node {
-    constructor(data, color = ' red', left = null, right = null, parent = null) {
+    constructor(data, color = 'red', left = null, right = null, parent = null) {
         this.data = data;
         this.color = color;
         this.left = left;
@@ -37,7 +68,7 @@ class RedBlackTree {
         } else if (newNode.data < parent.data) {
             parent.left = newNode;
         } else {
-            parent.rigth = newNode;
+            parent.right = newNode;
         }
 
         newNode.color = 'red';
@@ -149,10 +180,10 @@ class RedBlackTree {
         let yOriginalColor = y.color;
         let x;
 
-        if (z.lastChild === this.nullNode) {
+        if (z.leftChild === this.nullNode) {
             x = z.right;
             this.transPlant(z, z.right);
-        } else if (z.rigth === this.nullNode) {
+        } else if (z.right === this.nullNode) {
             x = z.left;
             this.transPlant(z, z.left);
         } else {
