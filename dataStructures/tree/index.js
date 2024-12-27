@@ -7,6 +7,8 @@ const NaryTree = require("./N_ary_tree.js");
 const SegmentTree = require("./segmentTree.js");
 const HeapTree = require("./binaryIndexTree.js");
 const RedBlackTree = require("./red-blackTree.js");
+const BTree = require("./B_tree.js");
+const Btree = require("./B_tree.js");
 
 module.exports = {
     AVLTree,
@@ -18,5 +20,6 @@ module.exports = {
     NaryTree,
     SegmentTree,
     HeapTree,
-    RedBlackTree
+    RedBlackTree,
+    Btree
 }
