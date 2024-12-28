@@ -13,11 +13,13 @@
  * @method search(key) - Searches for a specific key in the BTree.
  *                       Time Complexity: O(t log n), where t is the minimum degree and n is the number of keys.
  *
- * @method splitChild(parent, index) - Splits a full child node during insertion to maintain the BTree properties.
+ * @method splitChild(parent,index) - Splits a full child node during insertion to maintain the BTree properties.
  *                                     Time Complexity: O(t), where t is the minimum degree.
  *
- * @method insertNonFull(node, key) - Inserts a key into a node that is not full, ensuring balance.
+ * @method insertNonFull(node,key) - Inserts a key into a node that is not full, ensuring balance.
  *                                    Time Complexity: O(t), where t is the minimum degree.
+ * 
+ * @method fromArray(arr) -  Converts an array of elements into a BTree by sequentially inserting each element.
  * Notes:
  * - The minimum degree (t) determines the range of keys a node can hold (between t-1 and 2t-1 keys).
  * - BTree guarantees efficient handling of large datasets with logarithmic time operations and minimizes disk I/O.
@@ -96,6 +98,12 @@ class Btree{
         // insert new node and middle key into the parent
         parent.keys.splice(index , 0, middleKey);
         parent.children.splice(index + 1 , 0 , newNode);
+    }
+
+    fromArray(arr) {
+        for (const key of arr) {
+            this.insert(key);
+        }
     }
 
     traverse(node = this.root , result = []){
