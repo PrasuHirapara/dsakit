@@ -1,6 +1,10 @@
 const dsa = require("./index.js");
 
-const coins = [1, 2, 5];
-const amount = 11;
+tree = new dsa.TrieTree();
+tree.insert("mohit");
+tree.insert("prasu");
+tree.insert("martin")
 
-console.log(dsa.minCoins(amount, coins));
+tree.deleteWord("martin");
+const ans = tree.traverse();
+console.log(ans);
