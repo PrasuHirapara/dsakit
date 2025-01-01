@@ -5,5 +5,5 @@ const matrix = require('./matrix/index.js');
 module.exports = {
   ...sorting,
   ...dynamicProgramming,
-  ...matrixchainMatrixMultiplicationchainMatrixMultiplication
+  ...matrix
 };
