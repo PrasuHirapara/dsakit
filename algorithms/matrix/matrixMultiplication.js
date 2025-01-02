@@ -28,6 +28,13 @@ function multiplyMatrices(a, b) {
     if (a.length === 1 && a[0].length === 1 && b.length === 1 && b[0].length === 1) {
       return [[a[0][0] * b[0][0]]];
     }
+
+     // Check if dimensions are already a power of 2
+     const isPowerOfTwo = (x) => (x & (x - 1)) === 0;
+
+     if (isPowerOfTwo(a.length) && isPowerOfTwo(aCols) && isPowerOfTwo(bCols)) {
+         return strassenMultiply(a, b);
+     }
   
     // Pad matrices to make them square if necessary
     const size = Math.max(a.length, aCols, bCols);
