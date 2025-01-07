@@ -32,8 +32,11 @@ function flyodWarshallBasic(graph) {
   for (let via = 0; via < length; via++) {
     for (let row = 0; row < length; row++) {
       for (let col = 0; col < length; col++) {
-        if (dist[row][via] !== Infinity || dist[via][j] !== Infinity) {
-          dist[i][j] = Math.min(graph[i][j], graph[i][via] + graph[via][j]);
+        if (dist[row][via] !== Infinity && dist[via][col] !== Infinity) {
+          dist[row][col] = Math.min(
+            dist[row][col],
+            dist[row][via] + dist[via][col]
+          );
         }
       }
     }
