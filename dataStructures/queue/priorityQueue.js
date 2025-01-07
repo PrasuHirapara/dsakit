@@ -50,7 +50,7 @@ class PriorityQueue{
     }
 
     dequeue(){
-        if(!this.list_head){
+        if(!this.list._head){
             throw new Error("Priority queue is empty");
         }
 
