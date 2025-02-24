@@ -10,6 +10,15 @@
     "type": "git",
     "url": "https://github.com//PrasuHirapara/dsakit"
   },
-  "author": "",
+  "authors": [
+    {
+      "name": "Prasu Hirpara",
+      "email": "prasuhirpara@gmail.com"
+    },
+    {
+      "name": "Mohit Bambharoliya",
+      "email": "mohitbambharoliya22@gmail.com"
+    }
+  ],
   "license": "ISC"
 }
