@@ -1,11 +1,12 @@
 {
   "name": "dsakit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "dsakit is a JavaScript library offering a wide range of data structures and algorithms for direct use. It includes sorting (Bubble, Merge, Quick), searching (Binary Search), dynamic programming, greedy algorithms, and essential structures like stacks, queues, and trees, enabling users to easily integrate them into their projects.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": ["dsakit", "data structures", "algorithms", "sorting", "searching", "graph", "tree", "stack", "queue"],
   "repository": {
     "type": "git",
     "url": "https://github.com//PrasuHirapara/dsakit"
